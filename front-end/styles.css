@@ -7,10 +7,22 @@
 body 
 {
     font-family: 'Cairo', sans-serif;
-    width: 100vw;
-    overflow-x: hidden;
+    width: 100%;
+    height:100vh;
     background:#f1f1f1;
+    color: #061324;
 
+}
+
+/*global */
+a
+{
+    text-decoration:none;
+    color: #0894A1;
+}
+.text-muted
+{
+    font-size: 50%;
 }
 
 /*LOGO*/
@@ -25,7 +37,132 @@ body
 /*Header */
 header 
 {
-    width: 100vw;
-    height: 4rem;
+    
+    height: 3rem;
     box-shadow: 0px 0px 2px #333, 1px 0px 4px #222;
+    display: block;
+}
+
+/* account forms */
+
+.account-form-div 
+{
+    position: absolute;
+    left: 10rem;
+    margin-top: 3rem;
+    background: #fff;
+    padding: 3rem;
+    width: 30rem;;
+    box-shadow: 0 0 0.3rem #222, 0 0 0.5rem #111;
+    border-radius: 0.25rem;
+    height: 69%;
+}
+
+.account-form-div legend 
+{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.special-field 
+{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+}
+.special-field input 
+{
+    padding: 0.45rem;
+    width: 19rem;
+    margin: 0.6rem;
+    margin-left: 2rem;
+    border:none;
+    border-bottom: 2px solid #061324;
+    outline:none;
+    font-size: 1.2rem;
+
+}
+.form-info 
+{
+    margin-top: 4rem;
+    text-align: center;
+    margin-left: -2rem;
+    font-weight: bolder;
+}
+
+/* buttons */
+.button
+{
+    position: relative;
+}
+.form-submit 
+{
+    position: absolute;
+    left: 3rem;
+    border:none;
+    width: 20rem;
+    padding: 0.6rem;
+    background: #061324;
+    color:#fff;
+    font-size: 1rem;
+    font-weight: bolder;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    
+}
+.form-submit:hover 
+{
+    background: #0894A1;
+}
+
+
+/*media queries */
+
+@media only screen and ( max-width: 800px) {
+ body
+ {
+     width: 100%;
+ }
+
+ .logo
+ {
+     font-size:1rem;
+ }
+ header
+ {
+     width: 100%;
+ }
+
+ .account-form-div 
+ {
+     width: 50%;
+     left: 2rem;
+     height:55%;
+ }
+ .account-form-div legend 
+ {
+     font-size: 1rem;
+ }
+ .special-field
+ {
+     margin:0;
+     padding:0;
+ }
+ .special-field input 
+ {
+     width: 80%;
+     font-size: 0.5rem;
+     margin-left: 3%;
+ }
+ .form-submit
+ {
+     left: 5%;
+     width: 12rem;
+     font-size: 0.2rem;
+     font-weight: bold;
+     margin-top: 1rem;
+ }
+ .form-info
+ {
+     font-size: 0.2rem;
+ }
 }
