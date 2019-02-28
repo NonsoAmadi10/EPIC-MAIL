@@ -20,6 +20,14 @@ a
     text-decoration:none;
     color: #0894A1;
 }
+
+li 
+{
+    list-style: none;
+
+}
+
+
 .text-muted
 {
     font-size: 50%;
@@ -91,6 +99,33 @@ header
     font-weight: bolder;
 }
 
+/*aside navlinks */
+
+aside
+{
+    height: 100vh;
+    background: #061324;
+    color: #f1f1f1;
+    width: 8rem;
+    margin:0;
+    padding: 1%;
+
+}
+aside ul li , .logout
+{
+    padding: 1.2rem;
+    font-size: 1rem;
+}
+/*link-messages */
+
+.link-messages 
+{
+    padding: 0.2rem;
+}
+.compose
+{
+    background: #0894A1;
+}
 /* buttons */
 .button
 {
