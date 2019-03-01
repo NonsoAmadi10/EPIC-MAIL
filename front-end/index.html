@@ -18,14 +18,14 @@
             <div class="wrapper">
                 <aside>
                     <ul>
-                        <li class="compose"><i class="fas fa-pen-square"></i><span class="link-messages">Compose</span></li>
-                        <li class="active"><i class="far fa-envelope-open"></i><span class="link-messages">Inbox</span></li>
-                        <li ><i class="fas fa-sign-in-alt"></i><span class="link-messages">Sent</span></li>
-                        <li> <i class="fas fa-file"></i><span class="link-messages">Draft</span></li>
-                        <li><i class="fas fa-users"></i><span class="link-messages">Groups</span></li>
+                        <li class="compose"><a href="compose.html"><i class="fas fa-pen-square"></i><span class="link-messages">Compose</span></a></li>
+                        <li class="active"> <a href="index.html"></a><i class="far fa-envelope-open"></i><span class="link-messages">Inbox</span></li>
+                        <li ><a href="sent.html"><i class="fas fa-sign-in-alt"></i><span class="link-messages">Sent</span></a></li>
+                        <li> <a href="draft.html"><i class="fas fa-file"></i><span class="link-messages">Draft</span></a></li>
+                        <li><a href="groups.html"><i class="fas fa-users"></i><span class="link-messages">Groups</span></a></li>
                     </ul>
                     <div class="logout">
-                        <p><i class="fas fa-share-square"></i><span class="link-messages">Logout</span></p>
+                        <a href="login.html"><i class="fas fa-share-square"></i><span class="link-messages">Logout</span></a>
                     </div>
                 </aside>
                 
@@ -33,23 +33,30 @@
         
             <section class="message-body">
         
-                <div class="messages" id="messageModal">
-                    <p class="senderid">No reply@epicmail</p>
-                    <p class="sender-title">Application for the role of a security officer</p>
+                <div class="messages" id="myModal">
+                    <span class="date">01-12-19</span>
+                    <hr>
+                    <a class="senderid unread">No reply@epicmail</a>
+                    
+                    <p class="sender-title unread">Application for the role of a security officer</p>
                 </div>
-                <div class="messages" id="messageModal">
-                        <p class="senderid">No reply@epicmail</p>
-                        <p class="sender-title">Application for the role of a security officer</p>
-                    </div>
-                    <div class="messages" id="messageModal">
-                            <p class="senderid">No reply@epicmail</p>
-                            <p class="sender-title">Application for the role of a security officer</p>
-                        </div>
-                        <div class="messages" id="messageModal">
-                                <p class="senderid">No reply@epicmail</p>
-                                <p class="sender-title">Application for the role of a security officer</p>
-                            </div>
-        
+                
+            </section>
+
+            <section class="messageModal" id="msg-modal-id">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="options"><span class="delete" id='delete'><i class="fas fa-trash"></i></span> <span class="draft" id='draft'><i class="fas fa-file"></i></span></div>
+                    <div class="message-body">
+                        <span class="date">01-12-19</span>
+                        <hr>
+                        <a class="senderid unread">No reply@epicmail</a>
+                        
+                        <p class="sender-title unread">Application for the role of a security officer</p>
+                        <div class="message">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo ea officia sed modi repellat iusto, enim excepturi magni odio necessitatibus.</div>
+                      </div>
+                  </div>
+                 
             </section>
         </main>
         <script src="index.js"></script>
