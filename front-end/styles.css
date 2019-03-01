@@ -33,7 +33,29 @@ li
     margin:0;
     margin-top: 3px;
 }
+input 
+{
+    width: 60%;
+    padding: 1rem;
+}
 
+button 
+{
+    width: 6rem;
+    padding: 0.95rem;
+    background:#061324;
+    color:#f1f1f1;
+    border:none;
+    cursor:pointer;
+    border-radius: 10px;
+
+}
+button:hover
+{
+    background:#0894A1;
+    font-size: 12px;
+    transition: 0.3s all ease;
+}
 
 .text-muted
 {
@@ -129,7 +151,7 @@ header
     margin-top: 1rem;
     font-size: 1rem;
 }
-.compose-mail button
+.compose-mail button 
 {
     width: 5rem;
     padding: 1rem;
