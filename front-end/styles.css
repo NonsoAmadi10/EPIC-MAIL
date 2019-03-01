@@ -105,12 +105,53 @@ header
     margin-left: -2rem;
     font-weight: bolder;
 }
+/*compose mail */
+.compose-mail
+{
+    margin: 8%;
+    display: block;
+    width: 50%;
+}
 
+.compose-mail input
+{
+    width: 95%;
+    margin-bottom: 1.2rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+.compose-mail button
+{
+    width: 5rem;
+    padding: 1rem;
+    margin: 10px auto;
+    border:none;
+    font-weight: bold;
+    background: #0894A1;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.compose-mail button:hover
+{
+    background: #061324;
+    color: #f1f1f1;
+}
+
+textarea
+{
+    
+    width: 100%;
+    padding: 10px;
+    overflow-y: scroll;
+}
 /*aside navlinks */
 
 aside
 {
-    height: 100vh;
+    height: 90vh;
     background: #061324;
     color: #f1f1f1;
     width: 8rem;
