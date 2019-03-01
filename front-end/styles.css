@@ -37,7 +37,15 @@ li
 
 .text-muted
 {
-    font-size: 50%;
+    font-size: 60%;
+}
+.link-info 
+{
+    color: #333;
+}
+.link-info:hover
+{
+    color: #ed553b;
 }
 
 /*LOGO*/
