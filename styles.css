@@ -1,0 +1,416 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body 
+{
+    font-family: 'Cairo', sans-serif;
+    width: 100%;
+    height:100vh;
+    background:#f1f1f1;
+    color: #061324;
+
+}
+
+/*global */
+a
+{
+    text-decoration:none;
+    color: #0894A1;
+}
+
+li 
+{
+    list-style: none;
+
+}
+.active
+{
+    border: 1px solid #f1f1f1;
+    color: #f1f1f1;
+    margin:0;
+    margin-top: 3px;
+}
+input 
+{
+    width: 60%;
+    padding: 1rem;
+}
+
+button 
+{
+    width: 6rem;
+    padding: 0.95rem;
+    background:#061324;
+    color:#f1f1f1;
+    border:none;
+    cursor:pointer;
+    border-radius: 10px;
+
+}
+button:hover
+{
+    background:#0894A1;
+    font-size: 12px;
+    transition: 0.3s all ease;
+}
+
+.text-muted
+{
+    font-size: 60%;
+}
+.link-info 
+{
+    color: #333;
+}
+.link-info:hover
+{
+    color: #ed553b;
+}
+
+/*LOGO*/
+
+.logo
+{
+    font-size: 2rem;
+    margin-left: 1rem;
+    color: #061324;
+    
+    
+}
+/*Header */
+header 
+{
+    
+    height: 3rem;
+    box-shadow: 0px 0px 2px #333, 1px 0px 4px #222;
+    display: block;
+    padding: 1%;
+}
+
+/* account forms */
+
+.account-form-div 
+{
+    position: absolute;
+    left: 10rem;
+    margin-top: 3rem;
+    background: #fff;
+    padding: 3rem;
+    width: 30rem;;
+    box-shadow: 0 0 0.3rem #222, 0 0 0.5rem #111;
+    border-radius: 0.25rem;
+    height: 69%;
+}
+
+.account-form-div legend 
+{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.special-field 
+{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+}
+.special-field input 
+{
+    padding: 0.45rem;
+    width: 19rem;
+    margin: 0.6rem;
+    margin-left: 2rem;
+    border:none;
+    border-bottom: 2px solid #061324;
+    outline:none;
+    font-size: 1.2rem;
+
+}
+.form-info 
+{
+    margin-top: 4rem;
+    text-align: center;
+    margin-left: -2rem;
+    font-weight: bolder;
+}
+/*compose mail */
+.compose-mail
+{
+    margin: 8%;
+    display: block;
+    width: 50%;
+}
+
+.compose-mail input
+{
+    width: 95%;
+    margin-bottom: 1.2rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+.compose-mail button 
+{
+    width: 5rem;
+    padding: 1rem;
+    margin: 10px auto;
+    border:none;
+    font-weight: bold;
+    background: #0894A1;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.compose-mail button:hover
+{
+    background: #061324;
+    color: #f1f1f1;
+}
+
+textarea
+{
+    
+    width: 100%;
+    padding: 10px;
+    overflow-y: scroll;
+}
+/*aside navlinks */
+
+aside
+{
+    height: 90vh;
+    background: #061324;
+    color: #f1f1f1;
+    width: 8rem;
+    margin:0;
+    padding: 1%;
+    float:left;
+
+}
+aside ul li , .logout
+{
+    padding: 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+aside ul li:hover, .logout:hover
+{
+    background: #333;
+    font-size: 0.1rem;
+    transition: 0.62s all  ease-in;
+}
+/*link-messages */
+
+.link-messages 
+{
+    padding: 0.2rem;
+}
+.compose
+{
+    border: 1px solid #0894A1;
+    color: #f1f1f1;
+}
+.compose:hover
+{
+    color: #f1f1f1;
+    background: none;
+}
+
+
+/*message body */
+
+.message-body
+{
+    float: center;
+    margin-right: 1%;
+    padding: 2%;
+    height: 90vh;
+    overflow: scroll;
+    box-sizing: border-box;
+    background-size: contain;
+}
+.messages
+{
+    margin-left: 15%;;
+    cursor: pointer;
+    width: 80%;
+    
+    margin-bottom: 1rem;
+}
+.messages:hover
+{
+    border: 1px solid #0894A1;
+    border-radius: 0.3rem;
+   padding: 10px;
+}
+
+.messageModal
+{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+     /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    transition: 3s all ease;
+}
+
+.options 
+{
+    width: 100%;
+    padding: 10px;
+    color: #061324;
+    
+    
+}
+.options span
+{
+   display: inline;
+   margin: 20px;
+   cursor: pointer
+}
+.options span:hover
+{
+    font-size: 3rem;
+    transition: 0.3s all ease-in-out;
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    overflow: auto;
+    transition: 3s ease;
+    
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.unread
+{
+    font-weight: bolder;
+}
+
+/* buttons */
+.button
+{
+    position: relative;
+}
+.form-submit 
+{
+    position: absolute;
+    left: 3rem;
+    border:none;
+    width: 20rem;
+    padding: 0.6rem;
+    background: #061324;
+    color:#fff;
+    font-size: 1rem;
+    font-weight: bolder;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    
+}
+.form-submit:hover 
+{
+    background: #0894A1;
+}
+
+
+/*media queries */
+
+@media only screen and ( max-width: 800px) {
+ body
+ {
+     width: 100%;
+ }
+
+ .logo
+ {
+     font-size:1rem;
+ }
+ header
+ {
+     width: 100%;
+     padding: 2%;
+ }
+
+ .account-form-div 
+ {
+     width: 50%;
+     left: 2rem;
+     height:55%;
+ }
+ .account-form-div legend 
+ {
+     font-size: 1rem;
+ }
+ .special-field
+ {
+     margin:0;
+     padding:0;
+ }
+ .special-field input 
+ {
+     width: 80%;
+     font-size: 0.5rem;
+     margin-left: 3%;
+ }
+ .form-submit
+ {
+     left: 5%;
+     width: 12rem;
+     font-size: 0.2rem;
+     font-weight: bold;
+     margin-top: 1rem;
+ }
+ .form-info
+ {
+     font-size: 0.2rem;
+ }
+ aside
+ {
+     width: 3rem;
+ }
+ .link-messages
+ {
+     display:none;
+ }
+ 
+}
+
+@media only screen and (max-width: 400px) 
+ {
+     .form-submit {
+         left: 0%;
+         width: 100%;
+     }
+     aside
+     {
+         width: 3rem;
+     }
+ }
