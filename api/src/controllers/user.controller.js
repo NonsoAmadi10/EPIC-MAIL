@@ -17,7 +17,7 @@ const userController = {
 
     return res.json({
       status: 404,
-      message: 'empty input fields',
+      error: 'empty input fields',
     });
   },
 
@@ -28,7 +28,7 @@ const userController = {
       if (!login) {
         return res.json({
           status: 404,
-          message: 'user does not exist. kindly log in',
+          error: 'user does not exist or empty input fields',
         });
       }
       return jwt.sign({ user }, process.env.JWT_SECRET_KEY, (err, token) => res.json({
@@ -39,7 +39,7 @@ const userController = {
 
     return res.json({
       status: 404,
-      message: 'empty input fields',
+      error: 'empty input fields',
     });
   },
 };
