@@ -4,7 +4,7 @@
   "description": "A mail sending api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/*.test.js --recursive --require @babel/register --timeout 10000 --exit",
     "build": "babel src --out-dir build",
     "serve": "node build/index.js",
     "start": "npm run build && npm run serve"
@@ -40,6 +40,8 @@
     "npm": "^6.9.0"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0"
   }
 }
