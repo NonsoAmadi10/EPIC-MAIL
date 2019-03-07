@@ -4,7 +4,7 @@
   "description": "A mail sending api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/*.test.js --recursive --require @babel/register --timeout 10000 --exit",
     "build": "babel src --out-dir build",
     "serve": "node build/index.js",
     "start": "npm run build && npm run serve"
