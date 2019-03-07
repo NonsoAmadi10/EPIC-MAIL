@@ -63,7 +63,7 @@ button:hover
 }
 .link-info 
 {
-    color: #333;
+    color: red;
 }
 .link-info:hover
 {
@@ -95,14 +95,17 @@ header
 .account-form-div 
 {
     position: absolute;
-    left: 10rem;
+    left: 10%;
+    margin-left:15%;
     margin-top: 3rem;
     background: #fff;
     padding: 3rem;
     width: 30rem;;
     box-shadow: 0 0 0.3rem #222, 0 0 0.5rem #111;
     border-radius: 0.25rem;
-    height: 69%;
+    height: auto;
+    
+    
 }
 
 .account-form-div legend 
