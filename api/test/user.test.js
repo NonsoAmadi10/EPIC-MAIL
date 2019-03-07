@@ -18,4 +18,16 @@ describe('Users', () => {
         done();
       });
   });
+  it('should not register a user on empty input fields ', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(testData.invalidSignupUser)
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body.status).to.equal(404);
+        expect(res.body).to.haveOwnProperty('message');
+        expect(res.body.message).to.equal('empty input fields');
+        done();
+      });
+  });
 });

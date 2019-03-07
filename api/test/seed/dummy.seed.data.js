@@ -4,4 +4,10 @@ export default {
     lastName: 'ggygyh',
     password: '7483782393',
   },
+  invalidSignupUser: {
+    firstName: ' ',
+    lastName: ' ',
+    password: ' ',
+
+  }
 };
