@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/NonsoAmadi10/EPIC-MAIL/issues"
   },
-  "homepage": "https://github.com/NonsoAmadi10/EPIC-MAIL#readme"
+  "homepage": "https://github.com/NonsoAmadi10/EPIC-MAIL#readme",
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "i": "^0.3.6",
+    "npm": "^6.9.0"
+  }
 }
