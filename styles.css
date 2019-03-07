@@ -203,8 +203,8 @@ aside ul li , .logout
 
 aside ul li:hover, .logout:hover
 {
-    background: #333;
-    font-size: 0.1rem;
+    
+    font-size: 0.2rem;
     transition: 0.62s all  ease-in;
 }
 /*link-messages */
@@ -218,11 +218,7 @@ aside ul li:hover, .logout:hover
     border: 1px solid #0894A1;
     color: #f1f1f1;
 }
-.compose:hover
-{
-    color: #f1f1f1;
-    background: none;
-}
+
 
 
 /*message body */
