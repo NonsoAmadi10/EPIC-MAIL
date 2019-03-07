@@ -21,6 +21,16 @@ const userService = {
     allUser.push(newUserEntry);
     return newUserEntry;
   },
+  loginUser(userData) {
+    /*
+      Search through to find if user exist, return true
+        */
+    const allUser = dummyData.userData;
+    // eslint-disable-next-line max-len
+    const findUser = allUser.find(user => (user.email === userData.email && user.password === userData.password));
+
+    return findUser;
+  },
 };
 
 export default userService;

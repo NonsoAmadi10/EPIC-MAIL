@@ -30,4 +30,18 @@ describe('Users', () => {
         done();
       });
   });
+  it('should allow a user to signin', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'amadi10',
+        password: 'xyzxyz',
+      })
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body.status).to.equal(200);
+        expect(res.body).to.haveOwnProperty('token');
+        done();
+      });
+  });
 });
