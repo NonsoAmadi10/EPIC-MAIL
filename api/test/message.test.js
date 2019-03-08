@@ -19,4 +19,16 @@ describe('Messages', () => {
         done();
       });
   });
+  it('should get all messages received by the user', (done) => {
+    chai.request(app)
+      .get('/api/v1/messages')
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body.status).to.equal(200);
+        expect(res.body).to.haveOwnProperty('data');
+        expect(res.body.data).to.be.an('array');
+        expect(res.body.data[0]).to.haveOwnProperty('status');
+        done();
+      });
+  })
 });

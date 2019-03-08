@@ -9,10 +9,10 @@
     "serve": "node build/index.js",
     "start": "npm run build && npm run serve",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "generate-lcov": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "generate-lcov": "nyc report --reporter=text-lcov >lcov.info",
     "coveralls-coverage": "coveralls < lcov.info",
     "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
-    "coverage": " npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage"
+    "coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage"
   },
   "repository": {
     "type": "git",

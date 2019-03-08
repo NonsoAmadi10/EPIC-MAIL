@@ -8,5 +8,12 @@ const messagesController = {
       data: allUnreadMessages,
     });
   },
+  fetchAllMessages(req, res) {
+    const allMessages = messageServices.getAllMessages();
+    return res.json({
+      status: 200,
+      data: allMessages,
+    });
+  },
 };
 export default messagesController;
