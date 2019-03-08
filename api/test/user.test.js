@@ -25,8 +25,35 @@ describe('Users', () => {
       .end((err, res) => {
         expect(res.body).to.haveOwnProperty('status');
         expect(res.body.status).to.equal(404);
-        expect(res.body).to.haveOwnProperty('message');
-        expect(res.body.message).to.equal('empty input fields');
+        expect(res.body).to.haveOwnProperty('error');
+        expect(res.body.error).to.equal('empty input fields');
+        done();
+      });
+  });
+  it('should allow a user to signin', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'amadi10',
+        password: 'xyzxyz',
+      })
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body.status).to.equal(200);
+        expect(res.body).to.haveOwnProperty('token');
+        done();
+      });
+  });
+
+  it('should not allow a user to signin on empty input fields', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send()
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body.status).to.equal(404);
+        expect(res.body).to.haveOwnProperty('error');
+        expect(res.body.error).to.equal('user does not exist or empty input fields');
         done();
       });
   });
