@@ -1,2 +1,5 @@
 front-end/node_modules
 node_modules
+build
+.env
+.nyc_output
