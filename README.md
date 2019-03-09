@@ -92,7 +92,10 @@ Group Members
 “data” : [{
 “token” : “45erkjherht45495783”,
 }]
-} ```
+
+```
+}
+
 ### Endpoint: POST /auth/login
 ### Login a user
 - Response spec:
@@ -100,7 +103,8 @@ Group Members
 “status” : 200,
 “data” : [{
 “token” : “ahd64jfhHG7832KFM5”,
-}] ```
+}] 
+```
 
 #### Endpoint: POST /messages
 - Create or send an email.
@@ -115,7 +119,8 @@ Group Members
 ”parentMessageId” : Integer,
 “status” : String,
 }]
-} ```
+```
+} 
 ### Endpoint: GET /messages
 - Fetch all received emails
 - GET /messages/unread

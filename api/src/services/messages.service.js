@@ -14,6 +14,10 @@ const messageServices = {
     const sentMessages = messages.filter(message => message.status === 'sent');
     return sentMessages;
   },
+  getASingleMessage(id) {
+    const foundMessage = message.find(message => message.id === id);
+    return foundMessage;
+  },
 };
 
 export default messageServices;
