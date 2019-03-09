@@ -6,9 +6,13 @@ const messageServices = {
     const unreadMessages = messages.filter(message => message.status === 'unread');
     return unreadMessages;
   },
-  getAllMessages() {
-    const allMessages = messages;
+  getAllReceivedMessages() {
+    const allMessages = messages.filter(message => message.status !== 'sent' && message.status !== 'draft');
     return allMessages;
+  },
+  getAllSentMessages() {
+    const sentMessages = messages.filter(message => message.status === 'sent');
+    return sentMessages;
   },
 };
 

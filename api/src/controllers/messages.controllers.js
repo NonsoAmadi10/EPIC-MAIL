@@ -9,10 +9,17 @@ const messagesController = {
     });
   },
   fetchAllMessages(req, res) {
-    const allMessages = messageServices.getAllMessages();
+    const allMessages = messageServices.getAllReceivedMessages();
     return res.json({
       status: 200,
       data: allMessages,
+    });
+  },
+  fetchAllSentMessages(req, res) {
+    const sentMessages = messageServices.getAllSentMessages();
+    return res.json({
+      status: 200,
+      data: sentMessages,
     });
   },
 };
