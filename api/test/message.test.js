@@ -1,8 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import {
-  expect
-} from 'chai';
+import { expect } from 'chai';
 import app from '../src/index';
 import testData from './seed/message.seed.data';
 chai.use(chaiHttp);
@@ -90,6 +88,7 @@ describe('Messages', () => {
         expect(res.body).to.haveOwnProperty('error');
         expect(res.body).to.haveOwnProperty('status');
         expect(res.body.status).to.equal(404);
+        done();
       });
   });
 
