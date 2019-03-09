@@ -15,5 +15,9 @@ const messagesController = {
       data: allMessages,
     });
   },
+  fetchAllSentMessages(req, res) {
+    const sentMessages = messageServices.getAllSentMessages();
+    return sentMessages;
+  }
 };
 export default messagesController;

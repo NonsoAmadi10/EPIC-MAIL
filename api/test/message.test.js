@@ -9,7 +9,7 @@ describe('Messages', () => {
   it('should get all unread Messages', (done) => {
     chai.request(app)
       .get('/api/v1/messages/unread')
-      .end((err, res) => {
+      .end((_err, res) => {
         expect(res.body).to.haveOwnProperty('status');
         expect(res.body.status).to.equal(200);
         expect(res.body).to.haveOwnProperty('data');
@@ -22,7 +22,7 @@ describe('Messages', () => {
   it('should get all messages received by the user', (done) => {
     chai.request(app)
       .get('/api/v1/messages')
-      .end((err, res) => {
+      .end((_err, res) => {
         expect(res.body).to.haveOwnProperty('status');
         expect(res.body.status).to.equal(200);
         expect(res.body).to.haveOwnProperty('data');
@@ -30,5 +30,6 @@ describe('Messages', () => {
         expect(res.body.data[0]).to.haveOwnProperty('status');
         done();
       });
-  })
+  });
+
 });
