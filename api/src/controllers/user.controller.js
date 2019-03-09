@@ -37,10 +37,7 @@ const userController = {
       }));
     }
 
-    return res.json({
-      status: 404,
-      error: 'empty input fields',
-    });
+    
   },
 };
 export default userController;

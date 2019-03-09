@@ -1,8 +1,10 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import { expect } from 'chai';
+import {
+  expect
+} from 'chai';
 import app from '../src/index';
-
+import testData from './seed/message.seed.data';
 chai.use(chaiHttp);
 
 describe('Messages', () => {
@@ -54,13 +56,41 @@ describe('Messages', () => {
         done();
       });
   });
-  it('should get a message record that exist',(done) => {
+  it('should get a message record that exist', (done) => {
     chai.request(app)
-    .get('/api/v1/messages/1')
-    .end((err, res) => {
-      expect(res.body.status).to.equal(200);
-      expect(res.body.data).to.be.an('object');
-      done();
-    })
-  })
+      .get('/api/v1/messages/1')
+      .end((err, res) => {
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.be.an('object');
+        done();
+      });
+  });
+  it('should post messages', (done) => {
+    chai.request(app)
+      .post('/api/v1/messages')
+      .send(testData.validMessage)
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('data');
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.haveOwnProperty('createdOn');
+        expect(res.body.data).to.haveOwnProperty('id');
+        expect(res.body.data).to.haveOwnProperty('message');
+        expect(res.body.data).to.haveOwnProperty('subject');
+        expect(res.body.data).to.haveOwnProperty('parentMessageId');
+        expect(res.body.data).to.haveOwnProperty('status');
+        done();
+      });
+  });
+  it('should not post messages on empty input fields', (done) => {
+    chai.request(app)
+      .post('/api/v1/messages')
+      .send(testData.invalidMessage)
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('error');
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body.status).to.equal(404);
+      });
+  });
+
 });

@@ -29,7 +29,7 @@ const messagesController = {
       return res.json({
         status: 401,
         error: 'Bad Request',
-      })
+      });
     }
     return res.json({
       status: 200,
