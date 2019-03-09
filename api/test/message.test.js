@@ -31,5 +31,17 @@ describe('Messages', () => {
         done();
       });
   });
-
+  it('should get all  Messages sent by the user', (done) => {
+    chai.request(app)
+      .get('/api/v1/messages/sent')
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body).to.haveOwnProperty('data');
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.be.an('array');
+        expect(res.body.data[0]).to.haveOwnProperty('status');
+        expect(res.body.data[0].status).to.equal('sent');
+        done();
+      });
+  });
 });
