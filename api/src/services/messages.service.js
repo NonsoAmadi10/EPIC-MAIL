@@ -15,7 +15,8 @@ const messageServices = {
     return sentMessages;
   },
   getASingleMessage(id) {
-    const foundMessage = message.find(message => message.id === id);
+    const foundMessage = messages.find(message => message.id === id);
+    if (!foundMessage) return false;
     return foundMessage;
   },
 };

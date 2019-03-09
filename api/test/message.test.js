@@ -44,4 +44,23 @@ describe('Messages', () => {
         done();
       });
   });
+
+  it('should not get a message record that does not exist', (done) => {
+    chai.request(app)
+      .get('/api/v1/messages/100')
+      .end((err, res) => {
+        expect(res.body.status).to.equal(401);
+        expect(res.body.error).to.equal('Bad Request');
+        done();
+      });
+  });
+  it('should get a message record that exist',(done) => {
+    chai.request(app)
+    .get('/api/v1/messages/1')
+    .end((err, res) => {
+      expect(res.body.status).to.equal(200);
+      expect(res.body.data).to.be.an('object');
+      done();
+    })
+  })
 });
