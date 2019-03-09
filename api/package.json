@@ -7,7 +7,7 @@
     "test": "nyc _mocha test/*.test.js --recursive --require @babel/register --timeout 10000 --exit",
     "build": "npm run clean && babel src --out-dir build",
     "clean": "rm -rf build && mkdir build",
-    "start": "npm run build && node ./build/server.js",
+    "start": "npm run build && node build/index.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "generate-lcov": "nyc report --reporter=text-lcov >lcov.info",
     "coveralls-coverage": "coveralls < lcov.info",
