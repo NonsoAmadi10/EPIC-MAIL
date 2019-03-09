@@ -29,12 +29,27 @@ const messagesController = {
       return res.json({
         status: 401,
         error: 'Bad Request',
-      })
+      });
     }
     return res.json({
       status: 200,
       data: found,
     });
+  },
+
+  postMessages(req, res) {
+    const messageBody = req.body;
+    if (messageBody.subject === ' ' || messageBody.message === ' ' || messageBody.senderName === ' ') {
+      return res.json({
+        status: 404,
+        error: 'empty input body',
+      });
+    }
+    const newMessage = messageServices.postMessages(req.body);
+      return res.json({
+        status: 200,
+        data: newMessage
+      });
   },
 };
 export default messagesController;
