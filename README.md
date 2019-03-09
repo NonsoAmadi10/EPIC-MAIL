@@ -87,14 +87,16 @@ Group Members
 #### Endpoint: POST /auth/signup
 ##### Create a user account.
 - Response spec:
-``` {
+```
+ {
 “status” : Integer,
 “data” : [{
 “token” : “45erkjherht45495783”,
 }]
 
-```
+
 }
+```
 
 ### Endpoint: POST /auth/login
 ### Login a user
@@ -109,7 +111,9 @@ Group Members
 #### Endpoint: POST /messages
 - Create or send an email.
 - Response spec:
-``` {
+
+``` 
+{
 “status” : Integer,
 “data” : [{
 “id” : Integer, // message unique id
@@ -119,8 +123,10 @@ Group Members
 ”parentMessageId” : Integer,
 “status” : String,
 }]
+
+}
+
 ```
-} 
 ### Endpoint: GET /messages
 - Fetch all received emails
 - GET /messages/unread
@@ -156,6 +162,7 @@ Group Members
 ### Endpoint: GET /messages/<message-id>
 - Fetch a specific email record
 - Response spec:
+
 ```
 {
 “status” : Integer,
@@ -170,9 +177,13 @@ Group Members
 “status” : String,
 }]
 }
-Endpoint: DELETE /messages/<message-id>
-Delete a specific email record
-Response spec:
+``` 
+
+### Endpoint: DELETE /messages/<message-id>
+### Delete a specific email record
+- Response spec:
+
+```
 {
 “status” : Integer,
 “data” : [{
