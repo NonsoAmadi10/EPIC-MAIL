@@ -9,11 +9,7 @@ directories:
 env:
 global:
   - CODECLIMATE_REPO_TOKEN=cdcf757a3a5ed88ba68d2a07e563032475c973f03320714b5e301f0eafad2d46
-before_install:
-  - cd api/
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+
 install:
   - npm install
 script:
