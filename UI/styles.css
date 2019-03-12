@@ -141,6 +141,12 @@ main {
     font-size: 1.2rem;
 
 }
+
+textarea
+{
+    height: 40vh;
+    overflow: scroll;
+}
 .form-info 
 {
     margin-top: 4rem;
@@ -149,19 +155,24 @@ main {
     font-weight: bolder;
 }
 /*compose mail */
+.compose-body 
+{
+   overflow-y: hidden;
+   padding: 2%;
+   
+}
 .compose-mail
 {
-    margin: 8%;
+    margin: 20px 10px;
     display: block;
     width: 50%;
 }
 
-.compose-mail input
+.compose-mail input , textarea
 {
-    width: 95%;
-    margin-bottom: 1.2rem;
+    width: 30rem;
+    margin: 25px auto;
     padding: 0.5rem;
-    margin-top: 1rem;
     font-size: 1rem;
 }
 .compose-mail button 
@@ -183,13 +194,7 @@ main {
     color: #f1f1f1;
 }
 
-textarea
-{
-    
-    width: 100%;
-    padding: 10px;
-    overflow-y: scroll;
-}
+
 /*aside navlinks */
 
 aside
