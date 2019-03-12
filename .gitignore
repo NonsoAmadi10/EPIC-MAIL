@@ -1,5 +1,4 @@
 front-end/node_modules
 node_modules
-
-.env
+build
 .nyc_output
