@@ -210,12 +210,7 @@ aside ul li , .logout
     cursor: pointer;
 }
 
-aside ul li:hover, .logout:hover
-{
-    
-    font-size: 0.2rem;
-    transition: 0.62s all  ease-in;
-}
+
 /*link-messages */
 
 .link-messages 
