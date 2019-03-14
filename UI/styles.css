@@ -90,14 +90,16 @@ header
     padding: 1%;
 }
 
+/*main */
+main {
+    width: 100%;
+}
+
 /* account forms */
 
 .account-form-div 
 {
-    position: absolute;
-    left: 10%;
-    margin-left:15%;
-    margin-top: 3rem;
+    margin: 50px auto;
     background: #fff;
     padding: 3rem;
     width: 30rem;;
@@ -108,29 +110,42 @@ header
     
     
 }
+.account-form 
+{
+    width: 100%;
+}
 
 .account-form-div legend 
 {
     font-size: 2rem;
     font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin: 0px auto;
 }
 .special-field 
 {
     margin: 0.5rem;
     padding: 0.5rem;
+    width: 100%;
     
 }
 .special-field input 
 {
     padding: 0.45rem;
-    width: 19rem;
-    margin: 0.6rem;
-    margin-left: 2rem;
+    width: 90%;
+    margin: 15px auto;
     border:none;
     border-bottom: 2px solid #061324;
     outline:none;
     font-size: 1.2rem;
 
+}
+
+textarea
+{
+    height: 40vh;
+    overflow: scroll;
 }
 .form-info 
 {
@@ -140,19 +155,25 @@ header
     font-weight: bolder;
 }
 /*compose mail */
+.compose-body 
+{
+   overflow-y: hidden;
+   overflow-x : hidden;
+   padding: 2%;
+   
+}
 .compose-mail
 {
-    margin: 8%;
+    margin: 20px 10px;
     display: block;
     width: 50%;
 }
 
-.compose-mail input
+.compose-mail input , textarea
 {
-    width: 95%;
-    margin-bottom: 1.2rem;
+    width: 30rem;
+    margin: 25px auto;
     padding: 0.5rem;
-    margin-top: 1rem;
     font-size: 1rem;
 }
 .compose-mail button 
@@ -174,13 +195,7 @@ header
     color: #f1f1f1;
 }
 
-textarea
-{
-    
-    width: 100%;
-    padding: 10px;
-    overflow-y: scroll;
-}
+
 /*aside navlinks */
 
 aside
@@ -201,12 +216,7 @@ aside ul li , .logout
     cursor: pointer;
 }
 
-aside ul li:hover, .logout:hover
-{
-    
-    font-size: 0.2rem;
-    transition: 0.62s all  ease-in;
-}
+
 /*link-messages */
 
 .link-messages 
@@ -316,16 +326,12 @@ aside ul li:hover, .logout:hover
 }
 
 /* buttons */
-.button
-{
-    position: relative;
-}
+
 .form-submit 
 {
-    position: absolute;
-    left: 3rem;
+    margin: 0px auto;
+    width: 100%;
     border:none;
-    width: 20rem;
     padding: 0.6rem;
     background: #061324;
     color:#fff;

@@ -83,4 +83,3 @@ A step by step series of examples that tell you how to get a development env run
  ## Contributors
  * W3 Schools
  * Traversy Media
- 

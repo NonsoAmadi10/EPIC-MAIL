@@ -1,0 +1,283 @@
+FORMAT: 3A
+HOST: http://epic-mail-2019.herokuapp.com/api/v1/
+
+# EPIC MAIL
+
+This is a web application that allows messages to be exchanged over the internet
+
+
+# Allowed HTTPs requests:
+* POST    : Update resource
+* GET     : Get a resource or list of resources
+* DELETE  : To delete resource
+
+# Description Of Usual Server Responses:
+* 200 ``OK`` - the request was successful (some API calls may return 201 instead).
+* 201 ``created`` - the request was successful and a resource was created.
+* 404 ``Not found`` -  resource was not found.
+
+# Code Sample 
+``` 
+{
+ status: Server Responses,
+ data: [array] or {objects}
+}
+
+```
+
+## HOME [/]
+### Homepage [GET]
++ Response 200 (application/json)
+               
+               {
+               "message": "Welcome to the api"
+               }
+
+## User [/auth/]
+### Create a new User [POST/signup]
+You should  create an account to use this service with your credentials.
++ Request (application/json)
+
+        {
+            "firstName": "",
+            "lastName": "",
+            "email": ""
+            "password": ""
+            
+            
+        }
++ Response 404 (application/json)
+         
+        {
+        
+           "status": 404,
+           "error": "empty Input fields"
+        }
+       
+    
+
++ Request (application/json)
+
+        {
+            "firstName": "Favourite programming language?",
+            "lastName": "Ipsum",
+            "email": "amajag@hshsh.com"
+            "password": "X-X-X-X"
+            
+            
+        }
+        
++ Response 201 (application/json)
+        
+    + Headers
+
+            Location: /auth/signup
+    
+    + Body 
+            
+            {
+            "status": 201,
+            "token": "453hegu3yeuaysuyewuuywuuw2u734hudhdvvchczgzhjwu7837287gdg"
+            
+            }
+
+
+### Login a User [POST/auth/login]
+
++ Request (application/json)
+    
+    
+   + Body 
+            
+    
+        {
+            
+            "email":" <invalid-email> or <non-existent user>",
+            "password": "<incorrect-password> or <empty-password-field>"
+        }
+        
+        
+            
+        
+            
++ Response 404 (application/json) 
+            
+   + Body
+
+            {
+                "error": 404
+                "error": "empty input fields or user does not exist"
+            }
+            
+            
+
++ Request (application/json)
+    
+    
+   + Body 
+            
+    
+        {
+            
+            "email":"somegoodemail@email.com"
+            "password": "correctpasswprd"
+        }
+        
+
++ Response 200 (application/json)
+    
+  
+            
+    
+            
+    + Body
+
+            {
+                "status": 200
+                "token": "dhbcsbvyuebyu3444534jhbabc3982"
+                ]
+            }
+            
+            
+            
+            
+## Messages [/messages]
+
+### Get All Received Messages  In Inbox[GET]
+User should be able to retrieve all messages received 
+
+
++ Response 200 (application/json)
+    
+    + Headers 
+            
+            Location: /messages 
+            
+    
+            
+    + Body
+
+            {
+                "status": 200
+                "data":[
+                    {
+                        "id ": Integer,
+                        "createdOn": DateTime,
+                        "subject": String,
+                        "message": String,
+                        "senderId": Integer,
+                        "parentMessageId":String,
+                        "status": String   //unread or read
+                    }, 
+                ]
+            }
+            
+### Get All Received Unread Messages [GET/messages/unread]
+User should be able to retrieve all unread messages
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": 200
+                "data":[
+                    {
+                        "id ": Integer,
+                        "createdOn": DateTime,
+                        "subject": String,
+                        "message": String,
+                        "senderId": Integer,
+                        "parentMessageId":Integer,
+                        "status": String   // read
+                    }, 
+                ]
+            }
+            
+### Get a specific mail record [GET/messages/:id]
+User should be able to fetch a specific mail record
++ Request (application/json)
+
+   + Headers 
+        Location: /messages/<invalid-id>
+        
++ Response 404 (application/json)
+
+     + Body
+
+            {
+                "status": 404,
+                "error": "invalid Request"
+                
+                
+            }
+            
++ Request (application/json)
+
+   + Headers 
+          Location: /messages/<valid-id>
+        
++ Response 200 (application/json)
+
+     + Body
+
+            {
+                "status": 200,
+                "data": {
+                           
+                           "id": Integer,
+                           "createOn": DateTime,
+                           "subject": String,
+                           "message": String,
+                           "receiverId": Integer,
+                           "parentMessageId": Integer,
+                           "status": String // sent or read or unread
+                        }
+            }
+### Get all sent messages [GET/messages/sent]
++ Response 200 (application/json)
+
+      + Body
+
+            {
+                "status": 200,
+                "data": [ {
+                           
+                           "id": Integer,
+                           "createOn": DateTime,
+                           "subject": String,
+                           "message": String,
+                           "receiverId": Integer,
+                           "parentMessageId": Integer,
+                           "status": String // sent
+            } ... 
+            ]
+            
+
+### Delete a specific message [DELETE/messages/:id]
++ Request (application/json)
+
+   + Headers 
+        Location: /messages/<invalid-id>
+        
++ Response 404 (application/json)
+
+     + Body
+
+            {
+                "status": 404,
+                "error": "invalid ID"
+            }
+
++ Request (application/json)
+
+   + Headers 
+        Location: /messages/<valid-id>
+        
++ Response 200 (application/json)
+
+     + Body
+
+            {
+                "status": 200,
+                "message": "message deleted"
+            }
