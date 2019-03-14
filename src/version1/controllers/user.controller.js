@@ -7,18 +7,19 @@ dotenv.config();
 const userController = {
   signUp(req, res) {
     const user = req.body;
-    if (user.firstName !== ' ' || user.lastName !== ' ' || user.password !== ' '|| user.email === ' ') {
-      userService.createUser(user);
-      return jwt.sign({ user }, process.env.JWT_SECRET_KEY, (_err, token) => res.json({
-        status: 200,
-        token,
-      }));
-    }
+    if (user.firstName == ' ' || user.lastName == ' ' || user.password == ' ' || user.email === ' ') {
+      
+      return res.json({
+        status: 404,
+        error: 'empty input fields',
+      });
 
-    return res.json({
-      status: 404,
-      error: 'empty input fields',
-    });
+    }
+    userService.createUser(user);
+    return jwt.sign({ user }, process.env.JWT_SECRET_KEY, (_err, token) => res.json({
+      status: 200,
+      token,
+    }));
   },
 
   loginUser(req, res) {
@@ -37,7 +38,7 @@ const userController = {
       }));
     }
 
-    
+
   },
 };
 export default userController;
