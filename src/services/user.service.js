@@ -7,11 +7,13 @@ const userService = {
     const allUser = dummyData.userData;
     newUser.firstName = userData.firstName;
     newUser.lastName = userData.lastName;
+    newUser.email    = userData.email;
     newUser.password = userData.password;
 
     const newUserEntry = {
       id: allUser.length + 1,
       firstName: newUser.firstName,
+      email: newUser.email,
       lastName: newUser.lastName,
       password: newUser.password,
 

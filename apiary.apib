@@ -1,80 +1,106 @@
-FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
 
-# EPIC MAIL
-
-Polls is a simple API allowing consumers to view polls and vote in them.
-
-## Questions Collection [/questions]
-
-### List All Questions [GET]
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "email": "amajag@hshsh.com"
+            "password": "X-X-X-X"
+            
+            
         }
-
+        
 + Response 201 (application/json)
-
+        
     + Headers
 
-            Location: /questions/2
+            Location: /auth/signup
+    
+    + Body 
+            
+            {
+            "status": 201,
+            "token": "453hegu3yeuaysuyewuuywuuw2u734hudhdvvchczgzhjwu7837287gdg"
+            
+            }
 
+
+### Login a User [POST/auth/login]
+
++ Request (application/json)
+    
+    
+   + Body 
+            
+    
+        {
+            
+            "email":" <invalid-email> or <non-existent user>",
+            "password": "<incorrect-password> or <empty-password-field>"
+        }
+        
+        
+            
+        
+            
++ Response 404 (application/json) 
+            
+   + Body
+
+            {
+                "error": 404
+                "error": "empty input fields or user does not exist"
+            }
+            
+            
+
++ Request (application/json)
+    
+    
+   + Body 
+            
+    
+        {
+            
+            "email":"somegoodemail@email.com"
+            "password": "correctpasswprd"
+        }
+        
+
++ Response 200 (application/json)
+    
+  
+            
+    
+            
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
+                "status": 200
+                "token": "dhbcsbvyuebyu3444534jhbabc3982"
                 ]
+            }
+            
+            
+            
+            
+## Messages [/messages]
+
+### Get All Received Messages  In Inbox[GET]
+User should be able to retrieve all messages received 
+
+
++ Response 200 (application/json)
+    
+    + Headers 
+            
+            Location: /messages 
+            
+    
+            
+    + Body
+
+            {
+                "status": 200
+                "data":[
+                    {
+                        "id ": Integer,
+                        "createdOn": DateTime,
+                        "subject": String,
+
             }
