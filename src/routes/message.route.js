@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import messagesController from '../controllers/messages.controllers';
-import Sanitize from '../middlewares/messages';
+
 
 const router = Router();
 
@@ -8,7 +8,7 @@ router.get('/messages/unread', messagesController.fetchAllUnreadMessage);
 router.get('/messages', messagesController.fetchAllMessages);
 router.get('/messages/sent', messagesController.fetchAllSentMessages);
 router.get('/messages/:id', messagesController.fetchSingleMessage);
-router.post('/messages', Sanitize.checkEmptyBody, messagesController.postMessages);
+router.post('/messages', messagesController.postMessages);
 router.delete('/messages/:id', messagesController.deleteMessagesController);
 
 export default router;

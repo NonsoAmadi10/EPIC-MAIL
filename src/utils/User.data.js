@@ -2,7 +2,7 @@ export default {
   userData: [
     {
       id: 1,
-      email: 'amadi10',
+      email: 'amadi10@gamil.com',
       firstName: 'amadi',
       lastName: 'Chinonso',
       password: 'xyzxyz',
@@ -10,7 +10,7 @@ export default {
     },
     {
       id: 2,
-      email: 'xyz10',
+      email: 'xyz10@gamil.com',
       firstName: 'brad',
       lastName: 'bash',
       password: 'xyzyz',
