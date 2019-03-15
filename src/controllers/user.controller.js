@@ -17,16 +17,17 @@ const userController = {
   loginUser(req, res) {
     const user = req.body;
     const login = userService.loginUser(user);
-    if (!login) {
-      return res.json({
-        status: 404,
-        error: 'user does not exist',
-      });
+    if (login) {
+      return jwt.sign({ user }, process.env.JWT_SECRET_KEY, (err, token) => res.json({
+        status: 200,
+        token,
+      }));
     }
-    return jwt.sign({ user }, process.env.JWT_SECRET_KEY, (err, token) => res.json({
-      status: 200,
-      token,
-    }));
+
+    return res.json({
+      status: 404,
+      error: 'no user exist',
+    });
   },
 
 };

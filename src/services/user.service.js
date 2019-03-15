@@ -7,7 +7,7 @@ const userService = {
     const allUser = dummyData.userData;
     newUser.firstName = userData.firstName;
     newUser.lastName = userData.lastName;
-    newUser.email    = userData.email;
+    newUser.email = userData.email;
     newUser.password = userData.password;
 
     const newUserEntry = {
@@ -30,8 +30,8 @@ const userService = {
     const allUser = dummyData.userData;
     // eslint-disable-next-line max-len
     const findUser = allUser.find(user => (user.email === userData.email && user.password === userData.password));
-
-    return findUser;
+    if (findUser) return findUser;
+    return false;
   },
 };
 

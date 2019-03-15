@@ -71,7 +71,7 @@ describe('Messages', () => {
       .end((err, res) => {
         expect(res.body).to.haveOwnProperty('data');
         expect(res.body).to.haveOwnProperty('status');
-        expect(res.body.status).to.equal(200);
+        expect(res.body.status).to.equal(201);
         //expect(res.body.data).to.haveOwnProperty('createdOn');
         expect(res.body.data).to.haveOwnProperty('id');
         expect(res.body.data).to.haveOwnProperty('message');
@@ -88,7 +88,7 @@ describe('Messages', () => {
       .end((err, res) => {
         expect(res.body).to.haveOwnProperty('error');
         expect(res.body).to.haveOwnProperty('status');
-        expect(res.body.status).to.equal(404);
+        expect(res.body.status).to.equal(401);
         done();
       });
   });
@@ -97,9 +97,21 @@ describe('Messages', () => {
       .delete('/api/v1/messages/3')
       .end((err, res) => {
         expect(res.body).to.haveOwnProperty('status');
-        expect(res.body.status).to.equal(200);
+        expect(res.body.status).to.equal(204);
         expect(res.body).to.haveOwnProperty('message');
         expect(res.body.message).to.equal('message deleted');
+        done();
+      });
+  });
+
+  it('should not delete a message that does not exist', (done) => {
+    chai.request(app)
+      .delete('/api/v1/messages/100')
+      .end((err, res) => {
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body.status).to.equal(404);
+        expect(res.body).to.haveOwnProperty('error');
+        expect(res.body.error).to.equal('Invalid ID');
         done();
       });
   });

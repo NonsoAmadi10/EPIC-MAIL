@@ -39,6 +39,12 @@ const messagesController = {
 
   postMessages(req, res) {
     const messageBody = req.body;
+    if(messageBody.subject === '' || messageBody.message === ' '){
+      return res.json({
+        status: 401,
+        error: 'empty input fields'
+      })
+    }
     const newMessage = messageServices.postMessages(messageBody);
     return res.json({
       status: 201,
