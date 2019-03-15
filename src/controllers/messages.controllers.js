@@ -39,15 +39,9 @@ const messagesController = {
 
   postMessages(req, res) {
     const messageBody = req.body;
-    if (messageBody.subject === ' ' || messageBody.message === ' ') {
-      return res.json({
-        status: 404,
-        error: 'empty input body',
-      });
-    }
-    const newMessage = messageServices.postMessages(req.body);
+    const newMessage = messageServices.postMessages(messageBody);
     return res.json({
-      status: 200,
+      status: 201,
       data: newMessage,
     });
   },
@@ -62,7 +56,7 @@ const messagesController = {
       });
     }
     return res.json({
-      status: 200,
+      status: 204,
       message: 'message deleted',
     });
   },

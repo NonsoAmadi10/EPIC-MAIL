@@ -1,6 +1,6 @@
 import express from 'express';
-import userRoutes from './version1/routes/user.route';
-import messageRouter from './version1/routes/message.route';
+import userRoutes from './routes/user.route';
+import messageRouter from './routes/message.route';
 
 const app = express();
 const port = process.env.PORT || 4000;
