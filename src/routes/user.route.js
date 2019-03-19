@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import userController from '../controllers/user.controller';
-import Sanitize from '../middlewares/user';
+import Sanitize from '../middlewares/user.validation';
 
 const router = Router();
 router.post('/auth/signup', Sanitize.signup, userController.signUp);
