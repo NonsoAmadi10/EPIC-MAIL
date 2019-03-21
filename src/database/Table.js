@@ -25,4 +25,3 @@ pool.connect().then((client) => {
     console.log(error);
   });
 
-export default pool;

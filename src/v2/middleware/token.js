@@ -19,10 +19,10 @@ class Token {
 
   static generateTokenLogin(req, res) {
     const {
-      email, password,
-    } = req.body;
+      id, email,
+    } = req;
     const token = jwt.sign({
-      email, password,
+      id, email,
     }, process.env.JWT_SECRET_KEY);
 
 
@@ -30,6 +30,22 @@ class Token {
       status: 'success',
       token,
     });
+  }
+
+  static async authorize(req, res, next) {
+    
+    try {
+      const token = req.headers.authorization;
+      if (!token) return res.status(400).send({ status: 'error', message: 'you must be logged in to access this route' });
+
+      const decoded = await jwt.verify(token, process.env.JWT_SECRET_KEY);
+      req.user = decoded;
+      
+      return next();
+    } catch (error) {
+      return res.status(400).send({ status: 'error', message: 'unauthorized failed' });
+    }
+
   }
 }
 export default Token;
