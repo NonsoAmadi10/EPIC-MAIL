@@ -7,4 +7,5 @@ const router = Router();
 
 router.post('/signup', Sanitize.signup, userController.signup, token.generateTokenSignup);
 router.post('/login', Sanitize.login, userController.login, token.generateTokenLogin);
+
 export default router;

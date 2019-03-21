@@ -4,6 +4,7 @@ const userMessagesDestroy = 'DROP TABLE IF EXISTS usermessages CASCADE; ';
 const groupDestroy = 'DROP TABLE IF EXISTS groups CASCADE; ';
 const groupName = 'DROP TABLE IF EXISTS usergroup CASCADE;';
 
+
 const dropQuery = `${usersDestroy}${messagesDestroy}${userMessagesDestroy}${groupDestroy}${groupName}`;
 
 export default dropQuery;

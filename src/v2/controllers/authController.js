@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import bcrypt from 'bcryptjs';
-import pool from '../../database/Table';
+import pool from '../../database/config/pooler';
 
 
 class UserController {
@@ -9,9 +9,9 @@ class UserController {
       firstName, lastName, password, email,
     } = req.body;
     try {
-      const existingUser = await pool.query('SELECT * FROM users WHERE email=$1; ', [email]);
-      if (existingUser.rowCount > 0) {
-        console.log(existingUser);
+      const existingUser = await pool.query('SELECT * FROM users WHERE email=$1;', [email]);
+      if (existingUser.rowCount) {
+        console.log(existingUser.rowCount);
         res.status(500).send({
           status: 'error',
           message: 'email already exist',
@@ -33,24 +33,23 @@ class UserController {
     } = req.body;
 
     try {
-      const existingUser = await pool.query('SELECT * FROM users WHERE email=$1;', [email]).rowCount;
-      if (!existingUser) {
+      const existingUser = await pool.query('SELECT * FROM users WHERE email=$1;', [email]);
+      
+      if (existingUser.rowCount <= 0) {
         return res.status(400).send({
           status: 'error',
           message: 'no user exist kindly register',
         });
       }
-      const userDetails = await pool.query('SELECT * FROM users WHERE email=$1;'[email]).rows[0];
-      const comparePassword = bcrypt.compareSync(password, userDetails.password);
+      const comparePassword = bcrypt.compareSync(password, existingUser.rows[0].password);
       if (!comparePassword) return res.status(400).send({ status: 'error', message: 'incorrect password' });
 
-      req.password = userDetails.password;
-      req.email = userDetails.email;
+      req.id = existingUser.rows[0].id;
+      req.email = existingUser.rows[0].email;
       return next();
     } catch (error) {
       return res.status(400).send({ status: 'error', error });
     }
   }
 }
-
 export default UserController;
