@@ -1,24 +1,18 @@
 class Validate {
   static isValidEmail(email) {
-    const re = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/ig;
-    const testEmail = re.test(email.trim().toLowerCase());
-    return testEmail;
+    const re = /^[\w]+@epic.com$/;
+    const testEmail = email && email.trim().toLowerCase();
+    return re.test(testEmail);
   }
 
-  static isValidPassword(password) {
-    return password.trim().length > 5;
+  static isValidParamsLength(param, length) {
+    return param.trim().length > length;
   }
 
-  static isValidFirstName(firstName) {
-    return firstName.trim().length > 1;
-  }
-
-  static isValidLastName(lastName) {
-    return lastName.trim().length > 1;
-  }
+ 
 
   static isNotNumber(name) {
-    const re = /^[a-zA-z]+$/;
+    const re = /[0-9]/g;
     const testName = re.test(name.trim().toLowerCase());
     return testName;
   }
@@ -27,6 +21,22 @@ class Validate {
     const re = /^$/;
     const testBody = re.test(input);
     return testBody;
+  }
+
+  static isWhiteSpace(input) {
+    const regex = /\s/g;
+    const testBody = regex.test(input);
+    return testBody;
+  }
+
+  static isMultipleSpace(input) {
+    const regex = /\w[ ]{2,}\w/g;
+    const testBody = regex.test(input);
+    return testBody;
+  }
+
+  static isValidParams(input){
+    return isNaN(input);
   }
 }
 

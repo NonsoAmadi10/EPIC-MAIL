@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": " cross-env NODE_ENV=test   nyc _mocha test/*.test.js --recursive --require @babel/register --timeout 10000 --exit",
-    "build": "npm run clean && babel src --out-dir build",
+    "build": "babel src --out-dir build",
     "clean": "rm -rf build && mkdir build",
     "production-start": "NODE_ENV=production npm start",
     "dev-start": "nodemon --exec babel-node src/index.js",

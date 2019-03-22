@@ -3,8 +3,3 @@ node_modules
 build
 .nyc_output
 bash.exe.stackdump
-.env
-groupControllers.js
-messages.controllers.js
-group.route.js
-message.route.js

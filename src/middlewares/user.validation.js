@@ -6,26 +6,26 @@ class authUser {
       firstName,
       lastName,
       password,
-      email,
+      email
     } = req.body;
-    if (firstName == ' ' || email == ' ' || password == ' ' || lastName == ' ') {
-      return res.json({
-        status: 400,
-        error: 'empty input fields',
-      });
-    }
-
-    const response = error => res.json({ status: 400, error });
+    const { id } = req.params;
+    
+    const response = error => res.status(400).send({ status: 400, error });
     if (Validator.checkEmpty(email)) return response('email cannot be empty');
     if (Validator.checkEmpty(lastName)) return response('lastname cannot be empty');
     if (Validator.checkEmpty(password)) return response('password cannot be empty');
     if (Validator.checkEmpty(firstName)) return response('firstname cannot be empty');
+    if (Validator.isWhiteSpace(firstName)) return response('firstname cannot contain spaces');
+    if (Validator.isWhiteSpace(lastName)) return response('lastname cannot contain spaces');
+    if (Validator.isMultipleSpace(password)) return response('password cannot contain multiple spaces');
     if (!Validator.isValidEmail(email)) return response('invalid email');
-    if (!Validator.isValidFirstName(firstName)) return response('firstname must be atleast two characters long');
-    if (!Validator.isValidLastName(lastName)) return response('lastname must be atleast two characters long');
-    if (!Validator.isValidPassword(password)) return response('password must be greater than five letters');
-    if (!Validator.isNotNumber(firstName)) return response('firstname cannot  contain number');
-    if (!Validator.isNotNumber(lastName)) return response('lastname cannot contain numbers');
+    if (!Validator.isValidParamsLength(firstName, 1)) return response('firstname must be atleast two characters long');
+    if (!Validator.isValidParamsLength(lastName, 1)) return response('lastname must be atleast two characters long');
+    if (!Validator.isValidParamsLength(password, 5)) return response('password must be greater than five letters');
+    if (Validator.isNotNumber(firstName)) return response('firstname cannot  contain number');
+    if (Validator.isNotNumber(lastName)) return response('lastname cannot contain numbers');
+    if (Validator.isValidParams(id)) return response('Request parameter entered is not Valid');
+
 
     req.firstName = firstName.trim();
     req.lastName = lastName.trim();

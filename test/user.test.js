@@ -7,20 +7,7 @@ import testData from './seed/dummy.seed.data';
 chai.use(chaiHttp);
 
 describe('Users', () => {
-  it('should not allow user to create an account on empty input fields', (done) => {
-    chai.request(app)
-      .post('/api/v1/auth/signup')
-      .send({
-        firstName: ' ', email: ' ', lastName: ' ', password: ' ',
-      })
-      .end((_err, res) => {
-        expect(res.body).to.haveOwnProperty('status');
-        expect(res.body.status).to.equal(400);
-        expect(res.body).to.haveOwnProperty('error');
-        expect(res.body.error).to.equal('empty input fields');
-        done();
-      });
-  });
+ 
   it('should not allow user to create an account using an invalid email', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
