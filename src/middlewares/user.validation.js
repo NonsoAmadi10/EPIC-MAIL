@@ -40,7 +40,7 @@ class authUser {
     if (Validator.checkEmpty(email)) return response('email cannot be empty');
     if (Validator.checkEmpty(password)) return response('password cannot be empty');
     if (!Validator.isValidEmail(email)) return response('invalid email');
-    if (!Validator.isValidPassword(password)) return response('password must be greater than five letters');
+    if (!Validator.isValidParamsLength(password, 5)) return response('password must be greater than five letters');
 
     return next();
   }
