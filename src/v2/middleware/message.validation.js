@@ -12,7 +12,7 @@ class msgSanitize {
     if (Validate.checkEmpty(subject)) return response('subject cannot be empty');
     if (Validate.checkEmpty(message)) return response('message cannot be empty');
     if (Validate.isMultipleSpace(subject)) return response('subject body cannot contain multiple spaces');
-    if (Validate.isValidParams(id)) return response('Request parameter entered is not Valid');
+   
 
     return next();
     }
