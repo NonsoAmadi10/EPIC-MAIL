@@ -59,8 +59,8 @@ class MessageContoller {
     const decUser = req.user;
     const senderid = decUser.id;
     try {
-      const getaSpecific = await pool.query('SELECT * FROM messages LEFT JOIN usermessages ON  messageId=$1 AND receiverId=$2 ORDER BY createdon DESC;', [messageId, senderid]);
-      return res.status(200).send({ status: 'success', data: getaSpecific.rows });
+      const getaSpecific = await pool.query('SELECT  FROM messages LEFT JOIN usermessages ON  messageId=$1 AND receiverId=$2 ORDER BY createdon DESC;', [messageId, senderid]);
+      return res.status(200).send({ status: 'success', data: getaSpecific.rows[0] });
     } catch (error) {
       return res.status(400).send({ status: 'error', error });
     }
