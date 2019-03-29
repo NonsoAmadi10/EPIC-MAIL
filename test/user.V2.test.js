@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import app from '../src/index';
 import {user, createTables } from './seed/versiontwo.seed';
 
-process.NODE_ENV = 'test'
+process.NODE_ENV = 'test';
 
 dotenv.config();
 

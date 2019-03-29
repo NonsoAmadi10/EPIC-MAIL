@@ -7,7 +7,7 @@ const user = {
     id: 1,
     firstName: 'amadi',
     lastName: 'nonso',
-    email: 'nonsoamadi@aol.com',
+    email: 'nonsoamadi@epic.com',
     password: '123456',
   },
 
