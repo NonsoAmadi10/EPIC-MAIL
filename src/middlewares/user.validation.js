@@ -6,10 +6,11 @@ class authUser {
       firstName,
       lastName,
       password,
-      email
+      email,
     } = req.body;
     
-    
+
+
     const response = error => res.status(400).send({ status: 400, error });
     if (Validator.checkEmpty(email)) return response('email cannot be empty');
     if (Validator.checkEmpty(lastName)) return response('lastname cannot be empty');
@@ -24,7 +25,7 @@ class authUser {
     if (!Validator.isValidParamsLength(password, 5)) return response('password must be greater than five letters');
     if (Validator.isNotNumber(firstName)) return response('firstname cannot  contain number');
     if (Validator.isNotNumber(lastName)) return response('lastname cannot contain numbers');
-    
+
 
 
     req.firstName = firstName.trim();
@@ -44,8 +45,6 @@ class authUser {
 
     return next();
   }
-    
-  
 }
 
 export default authUser;

@@ -15,8 +15,16 @@ const user = {
     id: 2,
     firstName: 'Phillip',
     lastName: 'Newman',
-    email: 'phillipnewman@aol.com',
+    email: 'phillipnewman@epic.com',
     password: '1456789',
+  },
+
+  validUserThree: {
+    id: 3,
+    firstName: 'amadi',
+    lastName: 'nonso',
+    email: 'badguy@epic.com',
+    password: '123456',
   },
 
   inValidUserEmptyfirstName: {
@@ -46,6 +54,15 @@ const user = {
     lastName: 'lasisi',
     email: 'lasisielenu@gmail.com',
     password: '1234567',
+  },
+};
+
+
+const messages = {
+  validMessage: {
+    subject: 'Andela Fellowship Invitation',
+    message: 'Congratulations bootcamper, We are pleased to announce that you have been extended an invitation to the andela fellowship',
+    email: 'amadi@epic.com'
   },
 };
 
@@ -82,24 +99,25 @@ CREATE TABLE IF NOT EXISTS users (
 );`;
 
   const createMessages = `
-CREATE TABLE IF NOT EXISTS messages(
-    id SERIAL PRIMARY KEY NOT NULL,
-    subject VARCHAR (125) NOT NULL,
-    message TEXT  NOT NULL,
-    parentMessageId  SERIAL REFERENCES messages(id),
-    senderId INTEGER,
-    createdon TIMESTAMP WITH TIME ZONE DEFAULT now(),
-    updated TIMESTAMP WITH TIME ZONE DEFAULT now(),
-    draft BOOLEAN 
-
-);`;
+  CREATE TABLE IF NOT EXISTS messages(
+      id SERIAL PRIMARY KEY NOT NULL,
+      subject VARCHAR (125) NOT NULL,
+      message TEXT  NOT NULL,
+      parentMessageId  SERIAL REFERENCES messages(id),
+      senderId INTEGER,
+      senderEmail VARCHAR(125),
+      createdon DATE,
+      updated TIMESTAMP WITH TIME ZONE DEFAULT now(),
+      draft BOOLEAN 
+  
+  );`;
 
   const userMessages = `
-CREATE TABLE IF NOT EXISTS usermessages (
-    receiverId INTEGER REFERENCES users(id),
-    messageId INTEGER REFERENCES messages(id),
-    read BOOLEAN NOT NULL
-);`;
+  CREATE TABLE IF NOT EXISTS recipients (
+      receiver VARCHAR REFERENCES users(email),
+      messageId INTEGER REFERENCES messages(id),
+      read BOOLEAN NOT NULL
+  );`;
 
   const group = `
 CREATE TABLE IF NOT EXISTS groups (
@@ -110,22 +128,25 @@ CREATE TABLE IF NOT EXISTS groups (
 );`;
 
   const userGroup = `
-CREATE TABLE IF NOT EXISTS usergroup (
-    id SERIAL PRIMARY KEY NOT NULL,
-    groudId INTEGER REFERENCES groups(id),
-    members INTEGER REFERENCES users(id),
-    email VARCHAR (255),
-    messageId INTEGER REFERENCES messages(id)
-);
-`;
+  CREATE TABLE IF NOT EXISTS usergroup (
+      groupId INTEGER REFERENCES groups(id),
+      members VARCHAR REFERENCES users(email),
+      messageId INTEGER REFERENCES messages(id)
+  );
+  `;
+
+  
 
   const createdQuery = `${createUsers}${createMessages}${userMessages}${group}${userGroup}`;
   await pool.query(`${dropQuery}; ${createdQuery};`);
+  await pool.query('INSERT INTO users (firstname, lastname, email,password) VALUES ($1, $2, $3, $4);',['amadi', 'justice','amadi@epic.com',1234567]);
 };
+
 
 export {
   user,
   createTables,
   generateTokens,
-
+  messages,
+ 
 };
