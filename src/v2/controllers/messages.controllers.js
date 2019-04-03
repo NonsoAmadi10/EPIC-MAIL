@@ -4,6 +4,7 @@ class MessageContoller {
   static async postMessages(req, res) {
     const decUser = req.user;
     const senderid = decUser.id;
+    const senderemail = decUser.email;
 
 
     const {
@@ -15,18 +16,15 @@ class MessageContoller {
       const receiver = await pool.query('SELECT * FROM users WHERE email=$1;', [email]);
       console.log(receiver);
       if (receiver.rows.length > 0) {
-        const { id } = receiver.rows[0];
-
-        const createMsg = await pool.query('INSERT INTO messages(subject, createdon, senderId, message)VALUES($1, $2, $3, $4) RETURNING *;', [subject, createdon, senderid, message]);
+        const createMsg = await pool.query('INSERT INTO messages(subject, createdon, senderId, senderEmail, message)VALUES($1, $2, $3, $4, $5) RETURNING *;', [subject, createdon, senderid, senderemail, message]);
         const result = createMsg.rows[0];
-        const msg = await pool.query('INSERT INTO usermessages(receiverId, messageId, read)VALUES($1, $2, $3) RETURNING * ;', [id, result.id, false]);
-
-        return res.status(201).send({ status: 'success', message: 'message sent', data: createMsg.rows[0] });
+        const msg = await pool.query('INSERT INTO recipients(receiver, messageId, read)VALUES($1, $2, $3) RETURNING * ;', [receiver.rows[0].email, result.id, false]);
+       
+        return res.status(201).send({ status: 'success', message: 'message sent', data: result });
       }
 
       return res.status(401).send({ status: 'error', message: 'no user exist with that email' });
     } catch (error) {
-      console.log(error);
       return res.status(400).send({ status: 'error', error });
     }
   }
@@ -34,11 +32,13 @@ class MessageContoller {
   static async getAllreceived(req, res) {
     const decUser = req.user;
     const senderid = decUser.id;
+    const senderemail = decUser.email;
 
     try {
-      const getallReceived = await pool.query('SELECT * FROM messages LEFT JOIN usermessages ON  receiverId=$1 ORDER BY createdon DESC;', [senderid]);
+      const getallReceived = await pool.query('SELECT * FROM messages LEFT JOIN recipients ON  receiver=$1 ORDER BY createdon DESC;', [senderemail]);
       return res.status(200).send({ status: 'success', data: getallReceived.rows });
     } catch (error) {
+      console.log(error);
       return res.status(400).send({ status: 'error', error });
     }
   }

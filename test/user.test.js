@@ -27,7 +27,7 @@ describe('Users', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-        firstName: 'a', lastName: 'Amadi', password: 'sgafsshs', email: 'amadi@gmail.com',
+        firstName: 'a', lastName: 'Amadi', password: 'sgafsshs', email: 'amadi@epic.com',
       })
       .end((_err, res) => {
         expect(res.body).to.haveOwnProperty('status');
@@ -42,7 +42,7 @@ describe('Users', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-        firstName: 'amadi', lastName: 'a', password: 'agsgs', email: 'amadi@gamil.com',
+        firstName: 'amadi', lastName: 'a', password: 'agsgs', email: 'amadi@epic.com',
       })
       .end((_err, res) => {
         expect(res.body).to.haveOwnProperty('status');
@@ -57,7 +57,7 @@ describe('Users', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-        firstName: 'amadi', lastName: 'jaycee', password: '12', email: 'amadi@gmail.com',
+        firstName: 'amadi', lastName: 'jaycee', password: '12', email: 'amadi@epic.com',
       })
       .end((_err, res) => {
         expect(res.body).to.haveOwnProperty('status');

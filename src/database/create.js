@@ -14,15 +14,16 @@ CREATE TABLE IF NOT EXISTS messages(
     message TEXT  NOT NULL,
     parentMessageId  SERIAL REFERENCES messages(id),
     senderId INTEGER,
-    createdon TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    senderEmail VARCHAR(125),
+    createdon DATE,
     updated TIMESTAMP WITH TIME ZONE DEFAULT now(),
     draft BOOLEAN 
 
 );`;
 
 const userMessages = `
-CREATE TABLE IF NOT EXISTS usermessages (
-    receiverId INTEGER REFERENCES users(id),
+CREATE TABLE IF NOT EXISTS recipients (
+    receiver VARCHAR REFERENCES users(email),
     messageId INTEGER REFERENCES messages(id),
     read BOOLEAN NOT NULL
 );`;
@@ -32,15 +33,13 @@ CREATE TABLE IF NOT EXISTS groups (
     id SERIAL PRIMARY KEY ,
     name VARCHAR (125),
     ownerId INTEGER REFERENCES users(id),
-    createdon TEXT NOT NULL
+    createdon DATE 
 );`;
 
 const userGroup = `
 CREATE TABLE IF NOT EXISTS usergroup (
-    id SERIAL PRIMARY KEY NOT NULL,
-    groudId INTEGER REFERENCES groups(id),
-    members INTEGER REFERENCES users(id),
-    email VARCHAR (255),
+    groupId INTEGER REFERENCES groups(id),
+    members VARCHAR REFERENCES users(email),
     messageId INTEGER REFERENCES messages(id)
 );
 `;

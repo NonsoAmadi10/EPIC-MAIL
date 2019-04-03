@@ -3,7 +3,7 @@ export default {
     firstName: 'xyz',
     lastName: 'ggygyh',
     password: '7483782393',
-    email: 'amadi@gmail.com',
+    email: 'amadi@epic.com',
   },
   invalidSignupUser: {
     firstName: ' ',

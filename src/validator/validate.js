@@ -1,7 +1,7 @@
 class Validate {
   static isValidEmail(email) {
     const re = /^[\w]+@epic.com$/;
-    const testEmail = email && email.trim().toLowerCase();
+    const testEmail = email.trim().toLowerCase();
     return re.test(testEmail);
   }
 
