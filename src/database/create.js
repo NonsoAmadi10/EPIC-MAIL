@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 const createMessages = `
 CREATE TABLE IF NOT EXISTS messages(
-    id SERIAL PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY,
     subject VARCHAR (125) NOT NULL,
     message TEXT  NOT NULL,
     parentMessageId  SERIAL REFERENCES messages(id),

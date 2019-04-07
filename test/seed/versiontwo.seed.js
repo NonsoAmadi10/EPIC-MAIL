@@ -134,12 +134,12 @@ CREATE TABLE IF NOT EXISTS groups (
       messageId INTEGER REFERENCES messages(id)
   );
   `;
-
-  
-
   const createdQuery = `${createUsers}${createMessages}${userMessages}${group}${userGroup}`;
   await pool.query(`${dropQuery}; ${createdQuery};`);
   await pool.query('INSERT INTO users (firstname, lastname, email,password) VALUES ($1, $2, $3, $4);',['amadi', 'justice','amadi@epic.com',1234567]);
+  await pool.query('INSERT INTO users (firstname, lastname, email,password) VALUES ($1, $2, $3, $4);',['amadi', 'nonso','nonsoamadi@epic.com',123456]);
+  await pool.query('INSERT INTO messages(subject, createdon, senderId, senderEmail, message)VALUES($1, $2, $3, $4, $5) RETURNING *;',['awo', new Date(), 1, 'amadi@epic.com','Hello My love']);
+  await pool.query('INSERT INTO recipients(receiver, messageId, read)VALUES($1, $2, $3) RETURNING * ;', ['nonsoamadi@epic.com', 1, false])
 };
 
 

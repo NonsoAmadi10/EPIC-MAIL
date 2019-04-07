@@ -14,7 +14,7 @@ class MessageContoller {
     const createdon = new Date();
     try {
       const receiver = await pool.query('SELECT * FROM users WHERE email=$1;', [email]);
-      console.log(receiver);
+    
       if (receiver.rows.length > 0) {
         const createMsg = await pool.query('INSERT INTO messages(subject, createdon, senderId, senderEmail, message)VALUES($1, $2, $3, $4, $5) RETURNING *;', [subject, createdon, senderid, senderemail, message]);
         const result = createMsg.rows[0];
@@ -31,23 +31,22 @@ class MessageContoller {
 
   static async getAllreceived(req, res) {
     const decUser = req.user;
-    const senderid = decUser.id;
     const senderemail = decUser.email;
 
     try {
-      const getallReceived = await pool.query('SELECT * FROM messages LEFT JOIN recipients ON  receiver=$1 ORDER BY createdon DESC;', [senderemail]);
+      const getallReceived = await pool.query('SELECT DISTINCT id, subject, message,senderEmail, createdon FROM messages LEFT JOIN recipients ON  receiver=$1 ;', [senderemail]);
       return res.status(200).send({ status: 'success', data: getallReceived.rows });
     } catch (error) {
-      console.log(error);
-      return res.status(400).send({ status: 'error', error });
+      console.log(error)
+      return res.status(404).send({ status: 'error', error });
     }
   }
 
   static async getAllUnreadMessages(req, res) {
     const decUser = req.user;
-    const senderid = decUser.id;
+    const senderemail = decUser.email;
     try {
-      const getallReceived = await pool.query('SELECT * FROM messages LEFT JOIN usermessages ON  receiverId=$1 AND read=$2 ORDER BY createdon DESC;', [senderid, false]);
+      const getallReceived = await pool.query('SELECT DISTINCT id, subject,message,senderEmail, createdon, read FROM messages LEFT JOIN recipients ON  receiver=$1 AND read=$2 ORDER BY createdon DESC;', [senderemail, false]);
       return res.status(200).send({ status: 'success', data: getallReceived.rows });
     } catch (error) {
       return res.status(400).send({ status: 'error', error });
@@ -55,14 +54,15 @@ class MessageContoller {
   }
 
   static async getASpecificMessage(req, res) {
-    const messageId = req.params.id;
+    const messageId = Number(req.params.id);
     const decUser = req.user;
-    const senderid = decUser.id;
+    const senderemail = decUser.email;
     try {
-      const getaSpecific = await pool.query('SELECT * FROM messages WHERE id=$1 AND senderId=$2;', [messageId, senderid]);
-      return res.status(200).send({ status: 'success', data: getaSpecific.rows });
+      const getaSpecific = await pool.query('SELECT * FROM messages LEFT JOIN recipients  ON id=$1 AND senderEmail=$2 OR id=$1 AND receiver=$3 ORDER BY messages.id ASC;', [messageId, senderemail, senderemail]);
+      return res.status(200).send({ status: 'success', data: getaSpecific.rows[0] });
     } catch (error) {
-      return res.status(400).send({ status: 'error', error });
+      console.log(error);
+      return res.status(404).send({ status: 'error', error });
     }
   }
 
