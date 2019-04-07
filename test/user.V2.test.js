@@ -15,17 +15,7 @@ chai.use(chaiHttp);
 before(createTables);
 
 describe('Users', () => {
-  it('should succesfully register a user', (done) => {
-    chai.request(app)
-      .post('/api/v2/auth/signup')
-      .send(user.validUser)
-      .end((err, res) => {
-        res.status.should.equal(201);
-        res.body.should.haveOwnProperty('status');
-        res.body.should.haveOwnProperty('token');
-        done();
-      });
-  });
+ 
 
   it('should succesfully register a user', (done) => {
     chai.request(app)
@@ -42,7 +32,7 @@ describe('Users', () => {
   it('should not  register a user if email exist ', (done) => {
     chai.request(app)
       .post('/api/v2/auth/signup')
-      .send(user.validUser)
+      .send(user.validUserThree)
       .end((err, res) => {
         res.status.should.equal(400);
         res.body.should.haveOwnProperty('status');
@@ -90,7 +80,7 @@ describe('Users', () => {
   it('should succesfully login a user', (done) => {
     chai.request(app)
       .post('/api/v2/auth/login')
-      .send(user.validUser)
+      .send(user.validUserThree)
       .end((err, res) => {
         res.status.should.equal(200);
         res.body.should.haveOwnProperty('status');
